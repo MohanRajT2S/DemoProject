@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AuthScreen from './AppModules/AuthScreen';
 import HomeScreen from './AppModules/HomeScreen';
+import PokeymonDetailsScreen from "./AppModules/PokeymonDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const MyStack = () => {
         options={{title: 'Welcome'}}
       />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name={'PokemonDetails'} component={PokeymonDetailsScreen}/>
     </Stack.Navigator>
   );
 };

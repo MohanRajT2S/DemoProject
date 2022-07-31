@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {ScrollView, Text, TextInput, TouchableOpacity, View} from 'react-native';
 
 class AuthScreen extends Component {
   constructor() {
@@ -9,22 +9,24 @@ class AuthScreen extends Component {
     };
   }
   handleLoginClick() {
-    console.log('click==>', this.state.codeText, this.state.codeText.length);
     if (this.state.codeText.length > 0) {
       this.props.navigation.navigate('HomeScreen');
+      this.setState({codeText:''})
+    }else {
+        alert('Please enter valid code')
     }
   }
 
   render() {
     const {codeText} = this.state;
     return (
+        <ScrollView contentContainerStyle={{flex:1}}>
       <View style={{flex: 1, justifyContent: 'center'}}>
         <TextInput
           style={{borderWidth: 2, padding: 10, margin: 10}}
           placeholder={'Please enter valid code'}
           value={codeText}
           onChangeText={text => {
-            console.log('text==>', text);
             this.setState({codeText: text});
           }}
         />
@@ -40,6 +42,7 @@ class AuthScreen extends Component {
           <Text style={{textAlign: 'center'}}>{'Login'}</Text>
         </TouchableOpacity>
       </View>
+        </ScrollView>
     );
   }
 }
